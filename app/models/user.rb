@@ -48,8 +48,18 @@ class User < ActiveRecord::Base
     tutor_meeting || student_meeting
   end
 
-  def find_closest(lat, lng)
+  def find_closest_available_tutor(topic_id)
+    available_tutors = User.includes(:topics)
+      .where("users.id != ?", id)
+      .where("users.available = ?", true)
+      .where("topics.id = ?", topic_id)
+      .select("users.lat, users.lng, users.id")
 
+    return nil if available_tutors.empty?
+
+    locations = available_tutors.map { |u| [u.lat,u.lng, u.id] }
+    kd = Kdtree.new(locations)
+    User.find(kd.nearest(lat, lng))
   end
 
   def role

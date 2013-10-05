@@ -10,20 +10,20 @@ ActiveRecord::Base.transaction do
 
   user1 = User.create!(fname: "Fire", lname: "Arson", 
     email: "firearson@mailinator.com", password: "password",
-    phone_number: "5554443333")
+    phone_number: "5554443333", lat:37.7976769, lng:-122.3943387)
 
 
   user2 = User.create!(fname: "Water", lname: "Spray", 
     email: "waterspray@mailinator.com", password: "password",
-    phone_number: "6665554444")
+    phone_number: "6665554444", lat:37.789256, lng:-122.401407)
 
   user3 = User.create!(fname: "Earth", lname: "Quake", 
     email: "earthquake@mailinator.com", password: "password",
-    phone_number: "7776665555")
+    phone_number: "7776665555", lat:37.784991, lng:-122.406857)
 
   user4 = User.create!(fname: "Wind", lname: "Breeze", 
     email: "windbreeze@mailinator.com", password: "password",
-    phone_number: "8887776666")
+    phone_number: "8887776666", lat:37.779528, lng:-122.413756)
 
   topic1 = Topic.create!(name: "Algebra", category: "Math")
   topic2 = Topic.create!(name: "Geometry", category: "Math")
