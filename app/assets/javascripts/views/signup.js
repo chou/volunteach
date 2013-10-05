@@ -18,18 +18,17 @@ TuberApp.Views.signup = Backbone.View.extend({
 
   signup: function(event) {
     console.log("signup function called");
-    alert("click to continue");
     event.preventDefault();
     signupData = $("#signup-form").serializeJSON();
     
-    var phone = signupData.phone_number;
+    var phone = signupData.user.phone_number;
     //disregard any characters which aren't numbers
     phone = phone.replace(/\D+/g, '')
     //disregard a leading one
-    if (phone.length === 10 && phone[0] === '1') {
+    if (phone.length === 11 && phone[0] === '1') {
       phone = phone.slice(1)
     }
-    signupData.phone_number = phone;
+    signupData.user.phone_number = phone;
     
     $.ajax({
       url: "/api/users",
