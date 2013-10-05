@@ -7,11 +7,13 @@ TuberApp.Views.UserShow = Backbone.View.extend({
 
   render: function(){
     var that = this;
-    this.user.meetings.each(function(meeting){
-      var meetingView = new TuberApp.Views.MeetingShow({
-        meeting: meeting
-      });
-      that.$el.append(meetingView.render().$el);
+    var contact = new TuberApp.Views.UserContact({ user: this.user });
+    var topics = new TuberApp.Views.UserTopics({ user: this.user });
+    var ratings = new TuberApp.Views.UserRatings({ user: this.user });
+      
+    this.$contact = contact.render().$el;
+    this.$topics = topics.render().$el;
+    this.$ratings = ratings.render().$el;
     })
   }
 
