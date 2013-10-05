@@ -27,7 +27,6 @@ TuberApp.Views.navbar = Backbone.View.extend({
       type: "DELETE",
       success: function(){
         console.log("success");
-        navbar.render();
       },
       error: function(resp){
         console.log(resp);

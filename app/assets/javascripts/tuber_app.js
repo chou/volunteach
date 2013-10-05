@@ -23,8 +23,8 @@ window.TuberApp = {
   },
 
   start: function(){
-    var navbar = new TuberApp.Views.navbar();
-    var renderedContent = navbar.render().$el
+    TuberApp.Store.navbar = new TuberApp.Views.navbar();
+    var renderedContent = TuberApp.Store.navbar.render().$el
     $navbar.html(renderedContent);
     var usersRouter = new TuberApp.Routers.Users($rootEl);
     // var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);

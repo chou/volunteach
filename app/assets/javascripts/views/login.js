@@ -28,8 +28,9 @@ TuberApp.Views.login = Backbone.View.extend({
       success: function(data){
         console.log(data)
         TuberApp.Store.currentUser = 
-          new TuberApp.Models.User(data.currentUser);
-        navbar.render();
+          new TuberApp.Models.User(data.user);
+        // TuberApp.Store.currentUser.on("change", TuberApp.Store.navbar.render);          
+        Backbone.history.navigate("home", { trigger:true })
       },
       error: function(resp){
         console.log(resp);
