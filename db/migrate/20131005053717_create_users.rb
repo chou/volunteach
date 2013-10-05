@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :lname
       t.string :email
       t.string :password_digest
-      t.string :location
+      t.float :lat
+      t.float :lng
       t.string :session_token
       t.string :facebook_id
       t.string :phone_number
@@ -16,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :users, :location
+    add_index :users, [:lat, :lng]
     add_index :users, :facebook_id, :unique => true
     add_index :users, :email, :unique => true
     add_index :users, :session_token, :unique => true

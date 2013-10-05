@@ -21,7 +21,7 @@
 
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :fname, :lname, :location, :facebook_id,
+  attr_accessible :email, :fname, :lname, :lat, :lng, :facebook_id,
                   :password, :session_token, :phone_number, :available
 
   validates :password_digest, presence: { message: "Password cannot be blank"}
@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
   end
 
   def find_closest(lat, lng)
+
+  end
 
   def role
     if tutor_meeting
