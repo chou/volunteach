@@ -24,11 +24,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :fname, :lname, :lat, :lng, :facebook_id,
                   :password, :session_token, :phone_number, :available
 
-  validates :password_digest, presence: { message: "Password cannot be blank"}
+  validates :password_digest, presence: {message: "Password cannot be blank"}
   validates :phone_number, presence: true 
-  validates :fname, presence: { message: "First name cannot be blank"}
-  validates :lname, presence: { message: "Last name cannot be blank"}
+  validates :fname, presence: {message: "First name cannot be blank"}
+  validates :lname, presence: {message: "Last name cannot be blank"}
   validates :phone_number, length: {is: 10}
+  validates :phone_number, numericality: {only_integer: true}
   validate :email_or_facebook
 
   def email_or_facebook
@@ -95,7 +96,7 @@ class User < ActiveRecord::Base
     user.verify_password?(password) ? user : nil
   end
 
-  def self.authenticate_by_facebook(secret)
+  def self.authenticate_by_facebook(secreto)
     response = HTTParty.get(
       "http://graph.facebook.com/me?access_token=#{secret}")
       self.find_by_facebook_id(JSON.parse(response.body)[:id])
