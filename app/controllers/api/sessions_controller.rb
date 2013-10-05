@@ -6,7 +6,8 @@ class Api::SessionsController < ApplicationController
       fb_login(params[:user][:access_token])
     end
     if logged_in?
-      render "users/show", status: :ok
+      @user = current_user
+      render "api/users/show", status: :ok
     else
       render false, status: :unprocessable_entity
     end
