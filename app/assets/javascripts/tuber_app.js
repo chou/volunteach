@@ -4,10 +4,13 @@ window.TuberApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    // alert('Hello from Backbone!');
+    $navbar.html(JST["navbar"]());
   }
 };
 
 $(document).ready(function(){
-  TuberApp.initialize();
+  $navbar = $("#navbar");
+  $rootEl = $("#content");
+  TuberApp.initialize($navbar, $rootEl);
 });
