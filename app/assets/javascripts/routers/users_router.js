@@ -19,6 +19,7 @@ TuberApp.Routers.Users = Backbone.Router.extend({
 
     }
   }else{
+    this.$rootEl.html("sign up/in");
     //some view for generic encouragement to onboard
   };
 

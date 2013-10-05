@@ -2,7 +2,10 @@ TuberApp.Views.login = Backbone.View.extend({
   initialize: function(){
     // this.user = options.user;
     this.template = JST["logIn"];
-    this.listenTo($("#login-submit"), "click", "logIn");
+  },
+  
+  events: {
+    "click #login-submit" : "logIn"
   },
 
   render: function(){
@@ -18,12 +21,14 @@ TuberApp.Views.login = Backbone.View.extend({
     event.preventDefault();
     loginData = $("#login-form").serializeJSON();
     $.ajax({
-      url: "/session",
+      url: "api/session",
       data: loginData,
       dataType: "json",
       type: "POST",
-      success: function(){
-        console.log("success");
+      success: function(data){
+        console.log(data)
+        TuberApp.Store.currentUser = 
+          new TuberApp.Models.User(data.currentUser);
         navbar.render();
       },
       error: function(resp){
