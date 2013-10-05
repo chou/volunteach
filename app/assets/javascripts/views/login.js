@@ -1,13 +1,13 @@
 TuberApp.Views.login = Backbone.View.extend({
-  initialize: function(options){
-    this.user = options.user;
+  initialize: function(){
+    // this.user = options.user;
     this.template = JST["logIn"];
     this.listenTo($("#login-submit"), "click", "logIn");
   },
 
   render: function(){
     var renderedContent = this.template({
-      user: this.user
+      // user: this.user
     });
 
     this.$el.html(renderedContent);

@@ -6,6 +6,12 @@ TuberApp.Views.navbar = Backbone.View.extend({
     this.listenTo($("#login"), "click", "logIn");
   },
 
+  events: {
+    "click #login" : "logIn",
+    "click #logout" : "logOut",
+    // "#signup click" : "signup",
+  },
+
   logIn: function(){
     console.log("clicked login");
     var loginView = new TuberApp.Views.login();
@@ -34,4 +40,10 @@ TuberApp.Views.navbar = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
+
+  // signup: function(){
+  //   var signupView = new TuberApp.Views.signup();
+  //   var renderedContent = signupView.render().$el;
+  //   $("#content").html(renderedContent);
+  // }
 })

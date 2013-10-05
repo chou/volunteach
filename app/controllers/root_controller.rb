@@ -4,7 +4,7 @@ class RootController < ApplicationController
     @current_user = current_user
     respond_to do |format|
       format.html
-      format.json { render :handlers => [:rabl], head => :ok }
+      format.json { render "root.rabl", head => :ok }
     end
   end
   
