@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20131005090026) do
   create_table "meetings", :force => true do |t|
     t.integer  "tutor_id"
     t.integer  "student_id"
+    t.integer  "topic_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -47,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20131005090026) do
     t.string   "password_digest"
     t.string   "location"
     t.string   "session_token"
-    t.integer  "facebook_id"
+    t.string   "facebook_id"
     t.string   "phone_number"
     t.float    "avg_rating",      :default => 0.0,   :null => false
     t.integer  "num_ratings",     :default => 0,     :null => false

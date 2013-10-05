@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :location
       t.string :session_token
-      t.integer :facebook_id
+      t.string :facebook_id
       t.string :phone_number
       t.float :avg_rating, :default => 0, :null => false
       t.integer :num_ratings, :default => 0, :null => false
