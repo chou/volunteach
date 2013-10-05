@@ -12,7 +12,9 @@ TuberApp.Routers.Users = Backbone.Router.extend({
     var showUser = new TuberApp.Views.UserShow({
       user: user
     });
-    var renderedContent = showUser.render().$el
-    this.$rootEl.html(renderedContent);
+    var renderedView = showUser.render();
+    this.$rootEl.html(renderedView.$contact)
+      .append(renderedView.$topics)
+      .append(renderedView.$ratings);
   }
 });

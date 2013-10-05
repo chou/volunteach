@@ -10,12 +10,14 @@ window.TuberApp = {
       url: "/api/topics",
       dataType: "json",
       type: "GET",
-      success: function(){
+      success: function(data){
+        TuberApp.Store.topics = new TuberApp.Collections.topics(data);
+        TuberApp.Store.currentUser = data.user ? new TuberApp.Models.User(data.user) : null;
         console.log("topic success");
         TuberApp.start();
       },
       error: function(resp){
-        console.log(failed);
+        console.log("failed");
       }
     });
   },
@@ -26,7 +28,7 @@ window.TuberApp = {
     $navbar.html(renderedContent);
     var usersRouter = new TuberApp.Routers.Users($rootEl);
     // var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
-    Backbone.history.start();
+    Backbone.history.start({ pushState: true });
   }
 };
 
