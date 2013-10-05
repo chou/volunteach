@@ -14,6 +14,6 @@ class Topic < ActiveRecord::Base
 
   validates :category, :name, presence: true
 
-  has_many :tutor_topics
+  has_many :tutor_topics, dependent: :destroy
   has_many :tutors, through: :tutor_topics, source: :tutor
 end

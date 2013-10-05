@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :location
       t.string :session_token
       t.integer :facebook_id
-      t.integer :phone_number
+      t.string :phone_number
       t.timestamps
     end
 

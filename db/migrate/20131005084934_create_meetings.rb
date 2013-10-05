@@ -6,7 +6,7 @@ class CreateMeetings < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :meetings, :tutor_id
-    add_index :meetings, :student_id
+    add_index :meetings, :tutor_id, :unique => true
+    add_index :meetings, :student_id, :unique => true
   end
 end

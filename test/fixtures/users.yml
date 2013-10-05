@@ -10,7 +10,7 @@
 #  location        :string(255)
 #  session_token   :string(255)
 #  facebook_id     :integer
-#  phone_number    :integer
+#  phone_number    :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

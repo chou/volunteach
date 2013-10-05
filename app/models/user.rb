@@ -10,7 +10,7 @@
 #  location        :string(255)
 #  session_token   :string(255)
 #  facebook_id     :integer
-#  phone_number    :integer
+#  phone_number    :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -23,16 +23,10 @@ class User < ActiveRecord::Base
   validates :email, :phone_number, presence: true 
   validates :fname, presence: { message: "First name cannot be blank"}
   validates :lname, presence: { message: "Last name cannot be blank"}
-  validate :phone_number_is_correct_format
+  validates :phone_number, length: {is: 10}
 
-  has_one :tutor # means "this user is a tutor"
-  has_many :meetings, :foreign_key => :student_id
-
-  def phone_number_is_correct_format
-    unless (Math.log10(self.phone_number).floor + 1) == 10
-      errors.add(:phone_number, "must be 10 digits long")  
-    end
-  end
+  has_one :tutor, dependent: :destroy # means "this user is a tutor"
+  has_many :meetings, :foreign_key => :student_id, dependent: :destroy
 
   def password=(password)
     self.password_digest = (password.blank? ? 

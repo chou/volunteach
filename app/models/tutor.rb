@@ -16,7 +16,7 @@ class Tutor < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
-  has_many :tutor_topics
+  has_many :tutor_topics, dependent: :destroy
   has_many :topics, through: :tutor_topics, source: :topic
 
   def add_rating(rating)
