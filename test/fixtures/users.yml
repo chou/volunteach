@@ -9,8 +9,11 @@
 #  password_digest :string(255)
 #  location        :string(255)
 #  session_token   :string(255)
-#  facebook_id     :integer
+#  facebook_id     :string(255)
 #  phone_number    :string(255)
+#  avg_rating      :float            default(0.0), not null
+#  num_ratings     :integer          default(0), not null
+#  available       :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

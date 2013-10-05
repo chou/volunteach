@@ -5,12 +5,13 @@
 #  id         :integer          not null, primary key
 #  tutor_id   :integer
 #  student_id :integer
+#  topic_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Meeting < ActiveRecord::Base
-  attr_accessible :student_id, :tutor_id
+  attr_accessible :student_id, :tutor_id, :topic_id
 
   validates :tutor_id, :student_id, presence: true
   validates :tutor_id, :student_id, uniqueness: true
@@ -28,5 +29,6 @@ class Meeting < ActiveRecord::Base
 
   belongs_to :tutor, class_name: "User"
   belongs_to :student, class_name: "User"
+  belongs_to :topic
 
 end
