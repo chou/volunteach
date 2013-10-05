@@ -1,6 +1,7 @@
 TuberApp.Views.UserRatings = Backbone.View.extend({
   initialize: function(options){
     this.user = options.user;
+    this.topics = options.topics;
     this.template = JST["users/showRatings"];
   },
 
