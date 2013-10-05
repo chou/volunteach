@@ -1,0 +1,27 @@
+<section>
+  <p class="title" data-section-title>
+    <a href="">Topics</a>
+  </p>
+  <div class="content" data-section-content>
+    <div class="row">
+      <% if(topics){ %>
+        <% topics.each(function(topic){ %>
+          <span class="label-tag">
+            <a href="#/topics/<%= topic.id %>"><%= topic.escape("title") %></a>
+            <img class="untag" src="/untag.png">
+          </span>
+        <% }) %>
+      <% } %>
+    </div>
+    <div class="row">
+      <div class="small-4 columns"><label for="topic_ids">Topic:</label></div>
+      <div class="small-7 small-offset-1 columns">
+        <select name="user[topic_ids][]" id="topic_ids" data-placeholder="Add Topics" multiple>
+        <% TuberApp.Store.topics.each(function(topic){ %>
+          <option value="<%= topic.id %>"><%= topic.escape("title") %></option>
+        <% }) %>
+        </select>
+      </div>
+    </div><!--div class row -->  
+  </div>
+</section>

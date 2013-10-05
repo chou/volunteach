@@ -3,6 +3,7 @@ class CreateMeetings < ActiveRecord::Migration
     create_table :meetings do |t|
       t.integer :tutor_id
       t.integer :student_id
+      t.integer :topic_id
 
       t.timestamps
     end

@@ -1,0 +1,14 @@
+.label-tag{
+  background-color: #e0edf5;
+  color: #3078ca;
+  padding: .2em;
+  padding-right: .4em;
+  margin: .2em;
+  display: inline-block;
+},
+
+.untag{
+  cursor: pointer;
+  vertical-align: middle;
+  margin: -6px -6px -6px 2px;
+}

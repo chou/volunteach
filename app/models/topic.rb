@@ -16,4 +16,5 @@ class Topic < ActiveRecord::Base
 
   has_many :tutor_topics, dependent: :destroy
   has_many :tutors, through: :tutor_topics, source: :tutor
+  has_many :meetings
 end
