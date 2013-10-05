@@ -1,6 +1,6 @@
 TuberApp.Routers.Users = Backbone.Router.extend({
   routes: {
-    "users/:id" :   "show"
+    "users/:id" :   "show",
     "home"      :   "home"
   },
 
@@ -19,6 +19,7 @@ TuberApp.Routers.Users = Backbone.Router.extend({
 
     }
   }else{
+    this.$rootEl.html("sign up/in");
     //some view for generic encouragement to onboard
   };
 
