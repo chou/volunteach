@@ -20,6 +20,7 @@ group :development do
   gem "pry-rails"
   gem "quiet_assets"
   gem "webrick"
+  gem "annotate"
 end
 
 gem 'bcrypt-ruby', :require => 'bcrypt'

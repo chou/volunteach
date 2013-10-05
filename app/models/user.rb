@@ -1,11 +1,35 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  fname           :string(255)
+#  lname           :string(255)
+#  email           :string(255)
+#  password_digest :string(255)
+#  location        :string(255)
+#  session_token   :string(255)
+#  facebook_id     :integer
+#  phone_number    :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
   attr_accessible :email, :fname, :lname, :location, :facebook_id,
-                  :password, :session_token
+                  :password, :session_token, :phone_number
 
   validates :password_digest, presence: { message: "Password cannot be blank"}
-  validates :email, presence: true 
+  validates :email, :phone_number, presence: true 
   validates :fname, presence: { message: "First name cannot be blank"}
   validates :lname, presence: { message: "Last name cannot be blank"}
+  validate :phone_number_is_correct_format
+
+  def phone_number_is_correct_format
+    unless (Math.log10(self.phone_number).floor + 1) == 10
+      errors.add(:phone_number, "must be 10 digits long")  
+    end
+  end
 
   def password=(password)
     self.password_digest = (password.blank? ? 
