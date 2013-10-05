@@ -11,7 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005063637) do
+ActiveRecord::Schema.define(:version => 20131005090026) do
+
+  create_table "meetings", :force => true do |t|
+    t.integer  "tutor_id"
+    t.integer  "student_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "meetings", ["student_id"], :name => "index_meetings_on_student_id"
+  add_index "meetings", ["tutor_id"], :name => "index_meetings_on_tutor_id"
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tutor_topics", :force => true do |t|
+    t.integer  "tutor_id"
+    t.integer  "topic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tutor_topics", ["topic_id"], :name => "index_tutor_topics_on_topic_id"
+  add_index "tutor_topics", ["tutor_id"], :name => "index_tutor_topics_on_tutor_id"
 
   create_table "tutors", :force => true do |t|
     t.integer  "user_id"

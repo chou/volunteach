@@ -13,6 +13,11 @@
 
 class Tutor < ActiveRecord::Base
   attr_accessible :user_id, :available
+  validates :user_id, presence: true
+
+  belongs_to :user
+  has_many :tutor_topics
+  has_many :topics, through: :tutor_topics, source: :topic
 
   def add_rating(rating)
     ratings = num_ratings * avg_rating

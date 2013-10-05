@@ -9,12 +9,12 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+class TutorTopic < ActiveRecord::Base
+  attr_accessible :topic_id, :tutor_id
 
-one:
-  tutor_id: 1
-  topic_id: 1
+  validates :topic_id, :tutor_id, presence: true
 
-two:
-  tutor_id: 1
-  topic_id: 1
+  belongs_to :tutor
+  belongs_to :topic
+
+end

@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   validates :lname, presence: { message: "Last name cannot be blank"}
   validate :phone_number_is_correct_format
 
+  has_one :tutor # means "this user is a tutor"
+  has_many :meetings, :foreign_key => :student_id
+
   def phone_number_is_correct_format
     unless (Math.log10(self.phone_number).floor + 1) == 10
       errors.add(:phone_number, "must be 10 digits long")  

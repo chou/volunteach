@@ -9,12 +9,10 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+require 'test_helper'
 
-one:
-  tutor_id: 1
-  topic_id: 1
-
-two:
-  tutor_id: 1
-  topic_id: 1
+class TutorTopicTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
