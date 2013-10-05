@@ -3,19 +3,31 @@
     <li class="name">SideLyftUberCar</li>
   </ul>
   <section class="top-bar-section">
-    <ul class="right">
-      <li>Student</li><!-- opposite of current view -->
-      <li class="has-dropdown">
-        <a href=""><img src="/nopic.png"></a>
-        <ul class="dropdown">
-          <li>
-            <a href="">Edit Profile</a>
-          </li>
-          <li>
-            <a href="">Sign Out</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <% if(TuberApp.Store.currentUser){ %>
+      <ul class="right">
+        <% if(TuberApp.Store.currentUser.role != "student"){ %>
+          <li>Get Help</li>
+        <% } %>
+        <% if(TuberApp.Store.currentUser.role != "tutor"){ %>
+          <li>Teach</li>
+        <% } %>        
+        <li class="has-dropdown">
+          <a href=""><img src="/nopic.png"></a>
+          <ul class="dropdown">
+            <li>
+              <a href="">Edit Profile</a>
+            </li>
+            <li>
+              <a id="logout" href="">Log Out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    <% }else{ %>
+      <ul class="right">
+      <li>Log In </li>
+      <li>Sign Up</li>
+      </ul>
+    <% } %>
   </section>
 </nav>

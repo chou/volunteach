@@ -14,6 +14,5 @@ TuberApp.Views.UserShow = Backbone.View.extend({
       that.$el.append(meetingView.render().$el);
     })
   }
-  // template: JST['users/show']
 
 });

@@ -3,9 +3,30 @@ window.TuberApp = {
   Collections: {},
   Views: {},
   Routers: {},
+  Store: {},
+
   initialize: function() {
-    // alert('Hello from Backbone!');
-    $navbar.html(JST["navbar"]());
+    $.ajax({
+      url: "/api/topics",
+      dataType: "json",
+      type: "GET",
+      success: function(){
+        console.log("topic success");
+        TuberApp.start();
+      },
+      error: function(resp){
+        console.log(failed);
+      }
+    });
+  },
+
+  start: function(){
+    var navbar = new TuberApp.Views.navbar();
+    var renderedContent = navbar.render().$el
+    $navbar.html(renderedContent);
+    var usersRouter = new TuberApp.Routers.Users($rootEl);
+    // var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
+    Backbone.history.start();
   }
 };
 

@@ -11,7 +11,7 @@ TuberApp.Views.MeetingShow = Backbone.View.extend({
     var collaborator_id = (
       tutor_id == current_id ? student_id : tutor_id
       );
-    var collaborator = new TuberApp.Models.user(
+    var collaborator = new TuberApp.Models.User(
       id: collaborator_id).fetch();
     var renderedContent = this.template({ 
       collaborator: collaborator,

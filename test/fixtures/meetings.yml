@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: meetings
+#
+#  id         :integer          not null, primary key
+#  tutor_id   :integer
+#  student_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tutor_id: 1
+  student_id: 1
+
+two:
+  tutor_id: 1
+  student_id: 1
