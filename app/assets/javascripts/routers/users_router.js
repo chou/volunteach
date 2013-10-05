@@ -1,6 +1,6 @@
 TuberApp.Routers.Users = Backbone.Router.extend({
   routes: {
-    "users/:id" :   "show"
+    "users/:id" :   "show",
     "home"      :   "home"
   },
 
