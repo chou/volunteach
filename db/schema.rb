@@ -44,7 +44,8 @@
     t.string   "lname"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "location"
+    t.float    "lat"
+    t.float    "lng"
     t.string   "session_token"
     t.string   "facebook_id"
     t.string   "phone_number"
@@ -57,7 +58,7 @@
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id", :unique => true
-  add_index "users", ["location"], :name => "index_users_on_location"
+  add_index "users", ["lat", "lng"], :name => "index_users_on_lat_and_lng"
   add_index "users", ["session_token"], :name => "index_users_on_session_token", :unique => true
 
 end
