@@ -5,13 +5,19 @@ class Api::SessionsController < ApplicationController
     else
       fb_login(params[:user][:access_token])
     end
-    render text: "Successfully logged in!" if logged_in?
-    render text: "Did not log in" unless logged_in?
+    if logged_in?
+      render "users/show", status: :ok
+    else
+      render false, status: :unprocessable_entity
+    end
   end
 
   def destroy
     logout
-    render text: "Successfully logged out!" unless logged_in?
-    render text: "Error in logging out." if logged_in?
+    unless logged_in?
+      render true, status: :ok
+    else
+      render false, status: :unprocessable_entity
+    end
   end
 end
