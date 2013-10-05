@@ -1,0 +1,31 @@
+<section>
+  <p class="title" data-section-title>
+    <a href="">Contact</a>
+  </p>
+  <div class="content" data-section-content>
+    <div class="row">
+      <div class="small-4 columns"><label for="fname">First Name:</label></div>
+      <div class="small-7 small-offset-1 columns"><input type="text" name="user[fname]" id="fname">
+        <%= TuberApp.Store.currentUser.get("fname") %>
+      </div>
+    </div><!--div class row -->
+    <div class="row">
+      <div class="small-4 columns"><label for="lname">Last Name:</label></div>
+      <div class="small-7 small-offset-1 columns"><input type="text" name="user[lname]" id="lname">
+        <%= TuberApp.Store.currentUser.get("lname") %>
+      </div>
+    </div><!--div class row -->
+    <div class="row">
+      <div class="small-4 columns"><label for="email">Email:</label></div>
+      <div class="small-7 small-offset-1 columns"><input type="text" name="user[email]" id="email">
+        <%= TuberApp.Store.currentUser.get("email") %>
+      </div>
+    </div><!--div class row -->
+    <div class="row">
+      <div class="small-4 columns"><label for="phone_number">Phone Number:</label></div>
+      <div class="small-7 small-offset-1 columns"><input type="text" name="user[phone_number]" id="phone_number">
+        <%= TuberApp.Store.currentUser.get("phone_number") %>
+      </div>
+    </div>  <!--div class row -->          
+  </div>
+</section>

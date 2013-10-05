@@ -23,7 +23,10 @@ group :development do
   gem "annotate"
 end
 
+gem 'httparty'
+gem 'geokit-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem "backbone-on-rails"
 gem "rabl"
+gem 'kdtree'
 gem 'debugger'
