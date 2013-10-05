@@ -10,8 +10,10 @@ class User < ActiveRecord::Base
   validates :lname, presence: { message: "Last name cannot be blank"}
   validates :phone_number, length: {is: 10}
 
-  has_one :tutor_meeting, foreign_key: :student_id, dependent: :destroy
-  has_one :student_meeting, foreign_key: :tutor_id, dependent: :destroy
+  has_one :student_meeting, foreign_key: :student_id, class_name: "Meeting", 
+    dependent: :destroy
+  has_one :tutor_meeting, foreign_key: :tutor_id, class_name: "Meeting", 
+    dependent: :destroy
   has_many :tutor_topics, foreign_key: :tutor_id, dependent: :destroy
   has_many :topics, through: :tutor_topics, source: :topic
 
