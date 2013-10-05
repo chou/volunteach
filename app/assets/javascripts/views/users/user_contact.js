@@ -2,7 +2,7 @@ TuberApp.Views.UserContact = Backbone.View.extend({
   initialize: function(options){
     this.user = options.user;
     this.template = JST["users/showContact"];
-  }
+  },
 
   render: function(){
     var renderedContent = this.template({

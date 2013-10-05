@@ -11,7 +11,7 @@ window.TuberApp = {
       dataType: "json",
       type: "GET",
       success: function(data){
-        TuberApp.Store.topics = new TuberApp.Collections.topics(data);
+        TuberApp.Store.topics = new TuberApp.Collections.Topics(data);
         TuberApp.Store.currentUser = data.user ? new TuberApp.Models.User(data.user) : null;
         console.log("topic success");
         TuberApp.start();

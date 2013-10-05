@@ -4,7 +4,7 @@ TuberApp.Views.UserShow = Backbone.View.extend({
     this.topics = this.user.get("topic_ids") || null;
     this.template = JST["users/show"];
     this.listenTo(this.user, "change", "render");
-  }
+  },
 
   render: function(){
     var that = this;

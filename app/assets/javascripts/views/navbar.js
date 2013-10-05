@@ -2,7 +2,15 @@ TuberApp.Views.navbar = Backbone.View.extend({
 
   initialize: function(){
     this.template = JST["navbar"];
-    this.listenTo($("logout"), "click", "logOut");
+    this.listenTo($("#logout"), "click", "logOut");
+    this.listenTo($("#login"), "click", "logIn");
+  },
+
+  logIn: function(){
+    console.log("clicked login");
+    var loginView = new TuberApp.Views.login();
+    var renderedContent = loginView.render().$el;
+    $("#content").html(renderedContent);
   },
   
   logOut: function(){

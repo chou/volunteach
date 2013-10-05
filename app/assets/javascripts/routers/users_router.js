@@ -5,10 +5,10 @@ TuberApp.Routers.Users = Backbone.Router.extend({
 
   initialize: function($rootEl){
     this.$rootEl = $rootEl;
-  }
+  },
 
   show: function(id){
-    var user = new TuberApp.Models.Users({ id: id }).fetch();
+    var user = new TuberApp.Models.User({ id: id }).fetch();
     var showUser = new TuberApp.Views.UserShow({
       user: user
     });
