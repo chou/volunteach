@@ -14,7 +14,7 @@ class TutorTopic < ActiveRecord::Base
 
   validates :topic_id, :tutor_id, presence: true
 
-  belongs_to :tutor
+  belongs_to :tutor, class_name: "User"
   belongs_to :topic
 
 end

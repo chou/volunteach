@@ -25,17 +25,14 @@ ActiveRecord::Base.transaction do
     email: "windbreeze@mailinator.com", password: "password",
     phone_number: "8887776666")
 
-  tutor1 = user1.create_tutor!
-  tutor2 = user2.create_tutor!
-
   topic1 = Topic.create!(name: "Algebra", category: "Math")
   topic2 = Topic.create!(name: "Geometry", category: "Math")
   topic3 = Topic.create!(name: "Calculus", category: "Math")
 
-  tutor_topic1 = TutorTopic.create!(tutor_id: tutor1.id, topic_id: topic1.id)
-  tutor_topic2 = TutorTopic.create!(tutor_id: tutor1.id, topic_id: topic2.id)
-  tutor_topic3 = TutorTopic.create!(tutor_id: tutor2.id, topic_id: topic1.id)
+  tutor_topic1 = TutorTopic.create!(tutor_id: user1.id, topic_id: topic1.id)
+  tutor_topic2 = TutorTopic.create!(tutor_id: user2.id, topic_id: topic2.id)
+  tutor_topic3 = TutorTopic.create!(tutor_id: user3.id, topic_id: topic1.id)
 
-  meeting1 = Meeting.create!(tutor_id: tutor1.id, student_id: user3.id)
-  meeting3 = Meeting.create!(tutor_id: tutor2.id, student_id: user1.id)
+  meeting1 = Meeting.create!(tutor_id: user1.id, student_id: user3.id)
+  meeting3 = Meeting.create!(tutor_id: user2.id, student_id: user4.id)
 end

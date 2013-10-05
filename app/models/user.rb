@@ -1,23 +1,8 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id              :integer          not null, primary key
-#  fname           :string(255)
-#  lname           :string(255)
-#  email           :string(255)
-#  password_digest :string(255)
-#  location        :string(255)
-#  session_token   :string(255)
-#  facebook_id     :integer
-#  phone_number    :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#
+
 
 class User < ActiveRecord::Base
   attr_accessible :email, :fname, :lname, :location, :facebook_id,
-                  :password, :session_token, :phone_number
+                  :password, :session_token, :phone_number, :available
 
   validates :password_digest, presence: { message: "Password cannot be blank"}
   validates :email, :phone_number, presence: true 
@@ -25,8 +10,24 @@ class User < ActiveRecord::Base
   validates :lname, presence: { message: "Last name cannot be blank"}
   validates :phone_number, length: {is: 10}
 
-  has_one :tutor, dependent: :destroy # means "this user is a tutor"
-  has_many :meetings, :foreign_key => :student_id, dependent: :destroy
+  has_one :tutor_meeting, foreign_key: :student_id, dependent: :destroy
+  has_one :student_meeting, foreign_key: :tutor_id, dependent: :destroy
+  has_many :tutor_topics, foreign_key: :tutor_id, dependent: :destroy
+  has_many :topics, through: :tutor_topics, source: :topic
+
+  def meeting
+    tutor_meeting || student_meeting
+  end
+
+  def role
+    if tutor_meeting
+      "tutor"
+    elsif student_meeting
+      "student"
+    else
+      nil
+    end
+  end
 
   def password=(password)
     self.password_digest = (password.blank? ? 
@@ -49,6 +50,13 @@ class User < ActiveRecord::Base
     return nil if user.nil?
 
     user.verify_password?(password) ? user : nil
+  end
+
+  def add_rating!(rating)
+    ratings = num_ratings * avg_rating
+    self.num_ratings += 1
+    self.avg_rating = (ratings + rating) / num_ratings
+    save!
   end
 
 end
