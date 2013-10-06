@@ -22,7 +22,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :fname, :lname, :lat, :lng, :facebook_id,
-                  :password, :session_token, :phone_number, :available
+                  :password, :session_token, :phone_number, :available,
+                  :topic_ids
 
   validates :password_digest, presence: {message: "Password cannot be blank"}
   validates :phone_number, presence: true 
