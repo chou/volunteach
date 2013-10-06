@@ -1,10 +1,9 @@
 TuberApp.Views.navbar = Backbone.View.extend({
 
   initialize: function(){
-    this.template = JST["navbar"];
-    this.listenTo($("#logout"), "click", "logOut");
-    this.listenTo($("#login"), "click", "logIn");
   },
+
+  template: JST["navbar"],
 
   events: {
     "click #login" : "logIn",
