@@ -13,7 +13,6 @@ window.TuberApp = {
       dataType: "json",
       type: "GET",
       success: function(data){
-        debugger
         console.log("Initializing stuff");
         TuberApp.Store.topics = new TuberApp.Collections.Topics(data);
         console.log("topic success");

@@ -3,7 +3,10 @@ TuberApp.Routers.Users = Backbone.Router.extend({
     "users/:id" :   "show",
     "home"      :   "home",
     "profile"   :   "profile",
-    ""          :   "root"
+    ""          :   "root",
+    "teach"     :   "teach",
+    "learn"     :   "learn",
+    "pending"   :   "pending"
   },
 
   initialize: function($rootEl){
@@ -12,14 +15,35 @@ TuberApp.Routers.Users = Backbone.Router.extend({
 
   root: function() {
     if (TuberApp.Store.currentUser) {
-      Backbone.history.navigate("profile", {trigger: true})
+      Backbone.history.navigate("home", {trigger: true})
     } else {
       TuberApp.Store.navbar.logIn();
     }
   },
 
   home: function() {
+    if(TuberApp.Store.currentUser){
+    //if currentUser.role is false, optNs to teach or to learn.
+      var home = new TuberApp.Views.teachOrLearn();
+      var renderedContent = home.render().$el;
+      this.$rootEl.html(renderedContent);
+    }
+    //else if meeting ongoing, display msg of ongoing meeting
+    //if pending, also a notification
     
+  },
+
+  learn: function(){
+    var learn = new TuberApp.Views.learn();
+    var renderedContent = learn.render().$el;
+    this.$rootEl.html(renderedContent);
+  },
+
+  teach: function(){
+    var teach = new TuberApp.Views.teach();
+    var renderedContent = teach.render().$el;
+    this.$rootEl.html(renderedContent);
+    teach.mapInitialize();
   },
 
   profile: function(){ 
