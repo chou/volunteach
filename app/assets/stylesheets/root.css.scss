@@ -24,3 +24,17 @@
 .full {
   width: 100%;
 }
+
+.star {
+  height: 100px;
+  width: 100px;
+  background-size:100px 100px;
+  
+  &.gray {
+    background-image:url('/assets/graystar.png');
+  }
+  
+  &.yellow {
+    background-image:url('/assets/star.png');
+  }
+}
