@@ -11,7 +11,7 @@ TuberApp.Views.teach = Backbone.View.extend({
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions
+    this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions
       );
   },
 
@@ -22,12 +22,14 @@ TuberApp.Views.teach = Backbone.View.extend({
   },
 
   locate: function(event){
-    var address = "1101 E. 56th St Chicago, IL" //$("#availability").serializeJSON();
+    event.preventDefault();
+    var view = this;
+    var address = $("#addr").val(); //$("#availability").serializeJSON();
     this.geocoder.geocode( {"address": address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
+        view.map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
-            map: map,
+            map: view.map,
             position: results[0].geometry.location
         });
       } else {
