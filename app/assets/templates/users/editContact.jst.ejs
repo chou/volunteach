@@ -1,0 +1,30 @@
+<% currentUser = TuberApp.Store.currentUser %>
+<div class="row">
+  <h2 class="center">Profile Settings</h2>
+  <div class="panel">
+    <form>
+      <fieldset>
+        <legend> Contact Information </legend>
+        <div class="small-6 columns">
+          <label> First Name </label>
+          <input name="fname" type="text" value="<%= currentUser.get('fname') %>"></input>
+        </div>
+        <div class="small-6 columns">
+          <label> Last Name </label>
+          <input name="lname" type="text" value="<%= currentUser.get('lname') %>"></input>
+        </div>
+        <div class="large-6 columns">
+          <label> Phone Number </label>
+          <input name="phone_number" type="text" value="<%= currentUser.get('phone_number') %>"></input>
+        </div>
+        <div class="large-6 columns">
+          <label> Email </label>
+          <input name="email" type="text" value="<%= currentUser.get('email') %>"></input>
+        </div>
+        <div class="small-12 columns">
+          <input class="full button" type="submit" value="Update Contact Information">
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
