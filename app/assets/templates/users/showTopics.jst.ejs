@@ -5,14 +5,13 @@
     </p>
     <div class="content" data-section-content>
       <div class="row">
-        <% if (false) { %>
-          <% topics.each(function(topic){ %>
-            <span class="label-tag">
-              <a href="#/topics/<%= topic.id %>"><%= topic.escape("title") %></a>
-              <img class="untag" src="/untag.png">
-            </span>
+        <ul class="no-bullet">
+          <% user.topics().each(function(topic){ %>
+            <li class="label-tag">
+              <a href="#/topics/<%= topic.id %>"><%= topic.escape("name") %></a>
+            </li>
           <% }) %>
-        <% } %>
+        </ul>
       </div>
       <div class="row">
         <div class="small-4 columns"><label for="topic_ids">Topic:</label></div>
