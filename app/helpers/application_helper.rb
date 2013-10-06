@@ -3,8 +3,8 @@ module ApplicationHelper
     @current_user ||= User.find_by_session_token(session[:token])
   end
 
-  def login(username, password)
-      if u = User.authenticate_by_credentials(username, password)
+  def login(email, password)
+      if u = User.authenticate_by_credentials(email, password)
         session[:token] = u.reset_session_token!
       else
         session[:token] = ""

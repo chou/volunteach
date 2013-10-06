@@ -20,17 +20,22 @@ TuberApp.Routers.Users = Backbone.Router.extend({
       }else{ //just display user's profile
         that.show(TuberApp.Store.currentUser.id);
       }
-    }else{
+    }else{//no current user
       this.$rootEl.html("sign up/in");
       //some view for generic encouragement to onboard
     };
 
   },
 
-  show: function(id){
+  show: function(id) {
+    var user = new TuberApp.Models.User({ id: id });
+    user.fetch();
+    TuberApp.Store.currentUser = user;
+    
     var showUser = new TuberApp.Views.UserShow({
-      user: TuberApp.Store.currentUser
+       user: user
     });
+    
     var renderedView = showUser.render();
     this.$rootEl.html(renderedView.$contact)
       .append(renderedView.$topics)

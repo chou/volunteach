@@ -1,6 +1,7 @@
 TuberApp.Views.UserTopics = Backbone.View.extend({
   initialize: function(options){
     this.user = options.user;
+    this.topics = options.topics;
     this.template = JST["users/showTopics"];
   },
 
