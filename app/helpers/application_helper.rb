@@ -1,5 +1,6 @@
 module ApplicationHelper
   def current_user
+    return nil if session[:token].nil?
     @current_user ||= User.find_by_session_token(session[:token])
   end
 
@@ -13,7 +14,7 @@ module ApplicationHelper
       if u = User.authenticate_by_credentials(email, password)
         session[:token] = u.reset_session_token!
       else
-        session[:token] = ""
+        session[:token] = nil
       end
   end
 
@@ -21,7 +22,7 @@ module ApplicationHelper
       if u = User.authenticate_by_facebook(access_token)
         session[:token] = u.reset_session_token!
       else
-        session[:token] = ""
+        session[:token] = nil
       end
   end
 
@@ -30,7 +31,7 @@ module ApplicationHelper
   end
 
   def logout
-    session[:token] = ""
     current_user.reset_session_token!
+    session[:token] = nil
   end
 end

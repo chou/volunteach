@@ -6,8 +6,10 @@ window.TuberApp = {
   Store: {},
 
   initialize: function(currentUser) {
-    TuberApp.Store.currentUser = new TuberApp.Models.User(currentUser);
-    TuberApp.Store.currentUser.fetch();
+    if (currentUser) {
+      TuberApp.Store.currentUser = new TuberApp.Models.User(currentUser);
+      TuberApp.Store.currentUser.fetch();
+    }
     $.ajax({
       url: "/api/topics",
       dataType: "json",
@@ -29,6 +31,7 @@ window.TuberApp = {
     var renderedContent = TuberApp.Store.navbar.render().$el
     $navbar.html(renderedContent);
     var usersRouter = new TuberApp.Routers.Users($rootEl);
+    var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
     // var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
     Backbone.history.start({ pushState: true });
   }

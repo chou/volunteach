@@ -2,19 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.label-tag{
-  background-color: #e0edf5;
-  color: #3078ca;
-  padding: .2em;
-  padding-right: .4em;
-  margin: .2em;
-  display: inline-block;
-}
 
-.untag{
+
+.untag {
   cursor: pointer;
-  vertical-align: middle;
-  margin: -6px -6px -6px 2px;
 }
 
 #content {
@@ -23,4 +14,28 @@
 
 .full {
   width: 100%;
+}
+
+.star {
+  height: 100px;
+  width: 100px;
+  background-size:100px 100px;
+  
+  &.gray {
+    background-image: url('/assets/graystar.png');
+  }
+  
+  &.yellow {
+    background-image: url('/assets/star.png');
+  }
+}
+
+.avg_rating {
+  &.gray {
+    background-image: url('/assets/graystars.png');
+  }
+  
+  &.yellow {
+    background-image: url('/assets/yellowstars.png');
+  }
 }

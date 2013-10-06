@@ -1,10 +1,9 @@
 TuberApp.Views.navbar = Backbone.View.extend({
 
   initialize: function(){
-    this.template = JST["navbar"];
-    this.listenTo($("#logout"), "click", "logOut");
-    this.listenTo($("#login"), "click", "logIn");
   },
+
+  template: JST["navbar"],
 
   events: {
     "click #login" : "logIn",
@@ -20,18 +19,18 @@ TuberApp.Views.navbar = Backbone.View.extend({
   },
   
   logOut: function() {
-    var that = this;
+    var navbar = this;
     TuberApp.Store.currentUser = null;
     $.ajax({
-      url: "/session",
+      url: "/api/session",
       dataType: "json",
       type: "DELETE",
       success: function(){
-        that.render();
-        console.log("success");
+        navbar.render();
       },
-      error: function(resp){
-        console.log(resp);
+      error: function(errorResponse){
+        debugger
+        console.log(errorResponse);
       }
     });
   },
