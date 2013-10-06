@@ -2,27 +2,27 @@
 <div class="row">
   <h2 class="center">Profile Settings</h2>
   <div class="panel">
-    <form>
+    <form id="edit-contact-form">
       <fieldset>
         <legend> Contact Information </legend>
         <div class="small-6 columns">
           <label> First Name </label>
-          <input name="fname" type="text" value="<%= currentUser.get('fname') %>"></input>
+          <input name="user[fname]" type="text" value="<%= currentUser.get('fname') %>"></input>
         </div>
         <div class="small-6 columns">
           <label> Last Name </label>
-          <input name="lname" type="text" value="<%= currentUser.get('lname') %>"></input>
+          <input name="user[lname]" type="text" value="<%= currentUser.get('lname') %>"></input>
         </div>
         <div class="large-6 columns">
           <label> Phone Number </label>
-          <input name="phone_number" type="text" value="<%= currentUser.get('phone_number') %>"></input>
+          <input name="user[phone_number]" type="text" value="<%= currentUser.get('phone_number') %>"></input>
         </div>
         <div class="large-6 columns">
           <label> Email </label>
-          <input name="email" type="text" value="<%= currentUser.get('email') %>"></input>
+          <input name="user[email]" type="text" value="<%= currentUser.get('email') %>"></input>
         </div>
         <div class="small-12 columns">
-          <input class="full button" type="submit" value="Update Contact Information">
+          <input class="full button" type="submit" value="Update Contact Information" id="edit-contact">
         </div>
       </fieldset>
     </form>

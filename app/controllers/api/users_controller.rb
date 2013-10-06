@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    @user.topic_ids = params[:user][:topic_ids]
+    @user.topic_ids = params[:user][:topic_ids] if params[:user][:topic_ids]
     render :show, status: :ok
   end
 
