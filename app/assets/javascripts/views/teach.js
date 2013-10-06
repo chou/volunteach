@@ -47,11 +47,6 @@ TuberApp.Views.teach = Backbone.View.extend({
         });
         view.markers.push(marker);
 
-        TuberApp.Store.currentUser.set({ 
-          lat: marker.position.lb,
-          lng: marker.position.mb
-        })        
-
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -66,9 +61,17 @@ TuberApp.Views.teach = Backbone.View.extend({
   },
 
   submit: function(event){
+    TuberApp.Store.currentUser.set({ 
+      lat: this.markers[0].position.lb,
+      lng: this.markers[0].position.mb,
+      available: true
+    });
+
     event.preventDefault();
     var tutorAvailability = $("#availability").serializeJSON();
-    TuberApp.Store.currentUser.save(tutorAvailability, 
+    
+    TuberApp.Store.currentUser.save(
+      tutorAvailability,
       { 
         wait: true,
         success: function(model, resp, optns){
