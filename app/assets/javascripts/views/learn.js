@@ -70,7 +70,8 @@ TuberApp.Views.learn = Backbone.View.extend({
       type: "POST",
       wait: true,
       success: function(model, resp, optns){
-        Backbone.history.navigate("");
+
+        Backbone.history.navigate("/home", {trigger: true});
       }
     });
   },

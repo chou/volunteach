@@ -72,6 +72,7 @@ TuberApp.Views.teach = Backbone.View.extend({
       { 
         wait: true,
         success: function(model, resp, optns){
+          console.log("submitted avail");
           Backbone.history.navigate("/home");
         }
       }
