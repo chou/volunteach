@@ -6,12 +6,6 @@ TuberApp.Views.UserEditTopics = Backbone.View.extend({
   },
 
   render: function(){
-    debugger
-    var topics = TuberApp.Store.topics;
-    var topicsByCatgeory = topics.groupBy("category");
-    _(topicsByCatgeory).each(function(a, b, c) {
-      debugger
-    });
     var renderedContent = this.template({
       user: this.user
     });

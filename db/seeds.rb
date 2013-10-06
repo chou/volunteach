@@ -42,11 +42,6 @@ ActiveRecord::Base.transaction do
   topic14 = Topic.create!(name: "Physics", category: "Science")
   topic15 = Topic.create!(name: "Anatomy", category: "Science")
 
-  topic16 = Topic.create!(name: "Biology", category: "Science")
-  topic17 = Topic.create!(name: "Chemistry", category: "Science")
-  topic18 = Topic.create!(name: "Physics", category: "Science")
-  topic19 = Topic.create!(name: "Anatomy", category: "Science")
-
   User.all.each do |u| 
     Topic.all.sample(5).each do |t|
       TutorTopic.create!(tutor_id: u.id, topic_id: t.id)
