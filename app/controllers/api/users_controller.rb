@@ -13,7 +13,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     @user.topic_ids = params[:user][:topic_ids]
   end

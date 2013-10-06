@@ -96,16 +96,16 @@ class User < ActiveRecord::Base
     user.verify_password?(password) ? user : nil
   end
 
-  def self.authenticate_by_facebook(secreto)
+  def self.authenticate_by_facebook(secret)
     response = HTTParty.get(
       "http://graph.facebook.com/me?access_token=#{secret}")
       self.find_by_facebook_id(JSON.parse(response.body)[:id])
   end
 
   def add_rating!(rating)
-    ratings = num_ratings * avg_rating
+    ratings = num_ratings * avg_rating.to_f
     self.num_ratings += 1
-    self.avg_rating = (ratings + rating) / num_ratings
+    self.avg_rating = (ratings + rating.to_f) / num_ratings
     save!
   end
 
