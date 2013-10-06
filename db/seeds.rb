@@ -27,12 +27,35 @@ ActiveRecord::Base.transaction do
 
   topic1 = Topic.create!(name: "Algebra", category: "Math")
   topic2 = Topic.create!(name: "Geometry", category: "Math")
-  topic3 = Topic.create!(name: "Calculus", category: "Math")
+  topic3 = Topic.create!(name: "Precalculus", category: "Math")
+  topic4 = Topic.create!(name: "Calculus", category: "Math")
+  
+  topic6 = Topic.create!(name: "Spanish", category: "Languages")
+  topic7 = Topic.create!(name: "French", category: "Languages")
+  topic8 = Topic.create!(name: "German", category: "Languages")
+  topic9 = Topic.create!(name: "Mandarin", category: "Languages")
+  topic10 = Topic.create!(name: "Japanese", category: "Languages")
+  topic11 = Topic.create!(name: "Italian", category: "Languages")
 
-  tutor_topic1 = TutorTopic.create!(tutor_id: user1.id, topic_id: topic1.id)
-  tutor_topic2 = TutorTopic.create!(tutor_id: user2.id, topic_id: topic2.id)
-  tutor_topic3 = TutorTopic.create!(tutor_id: user3.id, topic_id: topic1.id)
+  topic12 = Topic.create!(name: "Biology", category: "Science")
+  topic13 = Topic.create!(name: "Chemistry", category: "Science")
+  topic14 = Topic.create!(name: "Physics", category: "Science")
+  topic15 = Topic.create!(name: "Anatomy", category: "Science")
 
-  meeting1 = Meeting.create!(tutor_id: user1.id, student_id: user3.id)
-  meeting3 = Meeting.create!(tutor_id: user2.id, student_id: user4.id)
+  User.all.each do |u| 
+    Topic.all.sample(5).each do |t|
+      TutorTopic.create!(tutor_id: u.id, topic_id: t.id)
+    end
+  end
+
+  meeting1 = Meeting.create!(
+    tutor_id: user1.id, 
+    student_id: user3.id, 
+    topic_id: user1.topics.first.id
+  )
+  meeting3 = Meeting.create!(
+    tutor_id: user2.id, 
+    student_id: user4.id,
+    topic_id: user2.topics.first.id
+  )
 end

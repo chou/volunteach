@@ -1,0 +1,29 @@
+<% topicsByCategory = TuberApp.Store.topics.groupBy("category") %>
+
+<div class="row">
+  <div class="panel">
+    <form class="custom">
+      <fieldset>
+        <legend> Topics </legend>
+        <% _(topicsByCategory).each( function(categoryTopics, category) { %>
+          <div class="large-3 columns">
+            <h5 class="subheader"><%= category %></h5>
+            <% _(categoryTopics).each( function(topic) { %>
+              <label for="<%= "topic" + topic.id %>">
+                <input type="checkbox" id="<%= "topic" + topic.id %>" style="display: none;" <%= _(user.get('topic_ids')).contains(topic.id) ? "checked" : "" %> >
+                <span class="custom checkbox <%= _(user.get('topic_ids')).contains(topic.id) ? "checked" : "" %>"></span> <%= topic.get('name') %>
+              </label>
+            <% }) %>
+          </div>
+        <% }) %>
+          <% negativeSpace = 4 - topicsByCategory.size % 4 %>
+          <div class="large-<%= negativeSpace %> columns">
+          </div>
+          <div class="small-12 columns">
+            <br>
+            <input class="full button" type="submit" value="Update Topics"> </input>
+          </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

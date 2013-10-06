@@ -51,7 +51,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
+$body-bg: url(/assets/subtle_dots_2x.png);
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -310,7 +310,7 @@ $primary-color: #2bc6ab;
 
 // We use these to style the legends when you use them
 
-// $legend-bg: #fff;
+$legend-bg: rgba(0,0,0,0);
 // $legend-font-weight: bold;
 // $legend-padding: emCalc(0, 3);
 
@@ -594,7 +594,7 @@ $primary-color: #2bc6ab;
 // $custom-form-bg: #fff;
 // $custom-form-bg-disabled: #ddd;
 // $custom-form-input-size: 16px;
-// $custom-form-check-color: #222;
+$custom-form-check-color: $primary-color;
 // $custom-form-check-size: 16px;
 // $custom-form-radio-size: 8px;
 // $custom-form-checkbox-radius: 0px;

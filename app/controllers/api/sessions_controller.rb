@@ -16,9 +16,9 @@ class Api::SessionsController < ApplicationController
   def destroy
     logout
     unless logged_in?
-      render true, status: :ok
+      render :json => true, status: :ok
     else
-      render false, status: :unprocessable_entity
+      render :json => false, status: :unprocessable_entity
     end
   end
 end

@@ -1,16 +1,27 @@
 TuberApp.Views.navbar = Backbone.View.extend({
 
   initialize: function(){
-    this.template = JST["navbar"];
-    this.listenTo($("#logout"), "click", "logOut");
-    this.listenTo($("#login"), "click", "logIn");
   },
+
+  template: JST["navbar"],
 
   events: {
     "click #login" : "logIn",
     "click #logout" : "logOut",
     "click #signup" : "signup",
+    "click #profile" : "profile",
+    "click #profileEdit" : "profileEdit"
   },
+
+  profile: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate("/profile", {trigger: true})
+  },
+
+  profileEdit: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate("/profile/edit", {trigger: true})
+  },  
 
   logIn: function() {
     console.log("clicked login");
@@ -19,19 +30,21 @@ TuberApp.Views.navbar = Backbone.View.extend({
     $("#content").html(renderedContent);
   },
   
-  logOut: function() {
-    var that = this;
+  logOut: function(event) {
+    event.preventDefault();
+    var navbar = this;
     TuberApp.Store.currentUser = null;
     $.ajax({
-      url: "/session",
+      url: "/api/session",
       dataType: "json",
       type: "DELETE",
       success: function(){
-        that.render();
-        console.log("success");
+        navbar.render();
+        Backbone.history.navigate("/", {trigger: true});
       },
-      error: function(resp){
-        console.log(resp);
+      error: function(errorResponse){
+        debugger
+        console.log(errorResponse);
       }
     });
   },

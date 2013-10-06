@@ -21,6 +21,7 @@ group :development do
   gem "quiet_assets"
   gem "webrick"
   gem "annotate"
+  gem "letter_opener"
 end
 
 gem 'httparty'

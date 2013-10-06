@@ -16,6 +16,7 @@
   	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
+     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>

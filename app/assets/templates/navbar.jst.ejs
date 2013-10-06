@@ -6,23 +6,18 @@
   </ul>
   <section class="top-bar-section">
     <% if(TuberApp.Store.currentUser){ %>
-      <ul class="right">
-        <% if(TuberApp.Store.currentUser.role != "student"){ %>
-          <li>Get Help</li>
-        <% } %>
-        <% if(TuberApp.Store.currentUser.role != "tutor"){ %>
-          <li>Teach</li>
-        <% } %>        
-        <li class="has-dropdown">
-          <a href=""><img width="40px" height="40px" src="/nopic.png"></a>
-          <ul class="dropdown">
-            <li>
-              <a href="">Edit Profile</a>
-            </li>
-            <li>
-              <a id="logout" href="">Log Out</a>
-            </li>
-          </ul>
+      <ul class="right">      
+        <li>
+          <a id="profile" href="/profile"><img width="40px" height="40px" src="/nopic.png"></a>
+        </li>
+        <li>
+          <a id="profile" href="/profile"><%= TuberApp.Store.currentUser.abbrevName() %></a>
+        </li>
+        <li>
+          <a id="profileEdit" href="/profile/edit">Edit Profile</a>
+        </li>
+        <li>
+          <a id="logout" href="/logout">Log Out</a>
         </li>
       </ul>
     <% } else { %>

@@ -6,6 +6,7 @@ TuberApp::Application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :topics, only: [:index, :show]
     resources :meetings, only: [:create, :destroy]
+    post "rate", to: "Rates#create"
   end
 
   get "*path", to: redirect { |params| "/#/#{URI.decode params[:path]}" }
