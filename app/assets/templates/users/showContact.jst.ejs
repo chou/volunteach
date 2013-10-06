@@ -1,9 +1,11 @@
-
+<% currentUser = TuberApp.Store.currentUser %>
 <div class="row">
-  <h2><%= TuberApp.Store.currentUser.fullName() %></h2>
+  <h2 class="center"><%= currentUser.fullName() %></h2>
   <div class="panel">
-    <div class="content" data-section-content>
-      
-    </div>
+    <h3> Contact Information </h3>
+    <ul class="no-bullet"> 
+      <li>Phone: <%= currentUser.prettyPhoneNumber() %></li>
+      <li>Email: <%= currentUser.get("email") %></li>
+    </ul>
   </div>
 </div>
