@@ -8,7 +8,7 @@ class Api::MeetingsController < ApplicationController
       student_id: current_user.id, topic_id: params[:topic_id])
       render :show
     else
-      render :text => "No tutor found. Perhaps you should try teaching this subject?"
+      render :json => {message: "No tutor found. Perhaps you should try teaching this subject?"}
     end
   end
 
