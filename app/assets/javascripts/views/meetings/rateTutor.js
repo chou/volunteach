@@ -1,20 +1,30 @@
 TuberApp.Views.RateTutor = Backbone.View.extend({
   events: {
-    "click .star": "hilightStar"
+    "mouseover .star": "hilightStar",
+    "click .star": "submitRating"
   },
   
   initialize: function(options) {
     this.user = options.user;
     this.meeting = options.meeting;
     this.template = JST['meetings/ratetutor'];
+    this.ratingFixed = false;
   },
   
   hilightStar: function (event) {
-    //debugger
+    if (this.ratingFixed) {
+      return;
+    }
     var star_num = $(event.target).data("id");
     var stars = $("li.star").slice(0, star_num);
     $("li.star").removeClass("yellow").addClass("gray");
     $(stars).removeClass("gray").addClass("yellow");
+  },
+  
+  submitRating: function (event) {
+    var star_num = $(event.target).data("id");
+    console.log("Rating of " + star_num + " submitted (EXCEPT NOT REALLY)")
+    this.ratingFixed = true;
   },
 
   render: function() {
