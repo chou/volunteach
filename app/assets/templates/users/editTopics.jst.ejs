@@ -1,0 +1,17 @@
+<% topicsByCategory = TuberApp.Store.topics.groupBy("category") %>
+
+<div class="row">
+  <div class="panel">
+    <form class="custom">
+      <fieldset>
+        <legend> Topics </legend>
+        <% topics.each(function(topic) { %>
+          <label for="<%= "topic" + topic.id %>">
+            <input type="checkbox" id="<%= "topic" + topic.id %>" style="display: none;" <%= _(user.get('topic_ids')).contains(topic.id) ? "checked" : "" %> >
+            <span class="custom checkbox <%= _(user.get('topic_ids')).contains(topic.id) ? "checked" : "" %>"></span> <%= topic.get('name') %>
+          </label>
+          <% }) %>
+      </fieldset>
+    </form>
+  </div>
+</div>
