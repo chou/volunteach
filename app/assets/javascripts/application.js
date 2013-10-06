@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializeJSON.min
-//= require foundation
+
 //= require underscore
 //= require backbone
 //= require tuber_app
