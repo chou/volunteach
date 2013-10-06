@@ -32,6 +32,10 @@ TuberApp.Views.teach = Backbone.View.extend({
             map: view.map,
             position: results[0].geometry.location
         });
+        TuberApp.Store.currentUser.set({ 
+          lat: results[0].geometry.location["lb"],
+          lng: results[0].geometry.location["mb"]})        
+
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -48,17 +52,8 @@ TuberApp.Views.teach = Backbone.View.extend({
   submit: function(event){
     event.preventDefault();
     var tutorAvailability = $("#availability").serializeJSON();
-
-    $.ajax({
-      url: "/api/users/" + TuberApp.Store.currentUser.id,
-      data: tutorAvailability,
-      dataType: "JSON",
-      type: "PUT",
-      success: function(){
-        Backbone.history.navigate("/pending");
-      },
-
-    });
+    TuberApp.Store.currentUser.save(tutorAvailability, 
+      { wait: true }
+    );
   },
-
 })
