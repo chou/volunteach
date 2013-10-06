@@ -37,6 +37,7 @@ TuberApp.Routers.Users = Backbone.Router.extend({
     var learn = new TuberApp.Views.learn();
     var renderedContent = learn.render().$el;
     this.$rootEl.html(renderedContent);
+    learn.mapInitialize();
   },
 
   teach: function(){
@@ -84,13 +85,5 @@ TuberApp.Routers.Users = Backbone.Router.extend({
         console.log("Error in show function.");
       }
     });
-  },
-
-  _authenticateUserFilter: function() {
-    if (!TuberApp.Store.currentUser) {
-      Backbone.history.navigate("", {trigger: true})
-    }
   }
-
-
 });

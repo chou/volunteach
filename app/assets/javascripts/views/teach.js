@@ -3,6 +3,12 @@ TuberApp.Views.teach = Backbone.View.extend({
     this.template = JST["home/teach"]; //map, avail btn
   },
 
+  events: {
+    "click #submit-avail"   :   "submit",
+    "click #find-me"        :   "locate"
+    //MAP HANDLERS HERE
+  },
+  
   mapInitialize: function(){
     this.geocoder = new google.maps.Geocoder();
     var mapOptions = {
@@ -15,11 +21,6 @@ TuberApp.Views.teach = Backbone.View.extend({
       );
   },
 
-  events: {
-    "click #submit-avail"   :   "submit",
-    "click #find-me"        :   "locate"
-    //MAP HANDLERS HERE
-  },
 
   locate: function(event){
     event.preventDefault();
