@@ -1,8 +1,4 @@
 <section>
   <p class="title" data-section-title style="top: 0px;">
-    <a href="#"><%= meeting.topic %> with <%= collaborator.get("name") %>
-<div class="row">
-  <label class="large-3 columns" for="topic">Topic:</label>
-  <input class="large-6 columns" type="text" name="meeting[topic]" id="topic">
-</div>
+    <a href="#"><%= TuberApp.Store.topics.where({id: meeting.get("topic_id") })[0].get("name") %> with <%= collaborator.get("fname") + " " +collaborator.get("lname") %>
 </section>

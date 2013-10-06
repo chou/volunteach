@@ -4,7 +4,12 @@ TuberApp.Views.MeetingShow = Backbone.View.extend({
     this.meeting = options.meeting;
   },
 
-  render: function(){
+  //because this rendering must wait on a fetch before
+  // returning, the final rendering onto the page occurs
+  // in the function via side-effect rather than
+  // return-value
+  do_render: function($rootEl) {
+    var view = this;
     var tutor_id = this.meeting.get("tutor_id");
     var student_id = this.meeting.get("student_id");
     var current_id = TuberApp.Store.currentUser.id;
@@ -13,14 +18,23 @@ TuberApp.Views.MeetingShow = Backbone.View.extend({
       );
     var collaborator = new TuberApp.Models.User({
       id: collaborator_id
-    }).fetch();
-    var renderedContent = this.template({ 
-      collaborator: collaborator,
-      meeting: this.meeting
     });
+    collaborator.fetch({
+      success: function(model, resp, optns){
+        //debugger
+        console.log(model);
+        var renderedContent = view.template({ 
+          collaborator: model,
+          meeting: view.meeting
+          });
+        view.$el.html(renderedContent);
+        $rootEl.html(view.$el);
+      },
+      error: function(model, resp, optns){
+        console.log("collab fetch failed")
+      }
+    })
 
-    this.$el.html(renderedContent);
-    return this;
   }
 
 });

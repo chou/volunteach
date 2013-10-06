@@ -24,9 +24,17 @@ TuberApp.Routers.Users = Backbone.Router.extend({
   home: function() {
     var currentUser = TuberApp.Store.currentUser;
     if(currentUser){
-      if(currentUser.role){
+      if(currentUser.get("role")){
         //if currentUser has a role, display mtng details
-      }else if(!currentUser.available){
+        var meeting = new TuberApp.Models.Meeting(currentUser.get("meeting"));
+        var meetingShow = new TuberApp.Views.MeetingShow({
+          meeting: meeting
+        });
+        //var renderedContent = meetingShow.render().$el;
+        //this.$rootEl.html(renderedContent);
+        meetingShow.do_render(this.$rootEl);
+
+      }else if(!currentUser.get("available")){
         //if user's not yet set availability to true
         var home = new TuberApp.Views.teachOrLearn();
         var renderedContent = home.render().$el;
@@ -35,6 +43,7 @@ TuberApp.Routers.Users = Backbone.Router.extend({
         //otherwise, user is pending (avail but not yet assigned)
         var pending = new TuberApp.Views.pending();
         var renderedContent = pending.render().$el;
+        this.$rootEl.html(renderedContent);
       }
     }else {
       TuberApp.Store.navbar.logIn();
