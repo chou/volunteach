@@ -1,6 +1,6 @@
 <form id="meeting">
   <label for="topic-id">Topic:</label>
-  <select id="topic-id" name="meeting[topic_id]">
+  <select id="topic-id" name="topic_id">
   <% TuberApp.Store.topics.each(function(topic){ %>
     <option value="<%= topic.id %>"><%= topic.get("name") %></option>
   <% }) %>
@@ -13,3 +13,9 @@
 </form>
 <div id="map-canvas" style="width: 500px; height: 500px;"></div>
 <button type="medium" id="submit-req">Teach Me!</button>
+
+<div id="learnModal" class="reveal-modal">
+  <h2>Sorry!</h2>
+  <p class="lead">Looks like all tutors are busy. Please try again later!</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
