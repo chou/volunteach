@@ -26,6 +26,7 @@ TuberApp.Views.login = Backbone.View.extend({
       dataType: "json",
       type: "POST",
       success: function(data){
+        debugger
         console.log(data)
         TuberApp.Store.currentUser = new TuberApp.Models.User(data);
         TuberApp.Store.navbar.render();          

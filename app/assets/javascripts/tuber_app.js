@@ -5,15 +5,17 @@ window.TuberApp = {
   Routers: {},
   Store: {},
 
-  initialize: function() {
+  initialize: function(currentUser) {
+    TuberApp.Store.currentUser = new TuberApp.Models.User(currentUser);
+    TuberApp.Store.currentUser.fetch();
     $.ajax({
       url: "/api/topics",
       dataType: "json",
       type: "GET",
       success: function(data){
+        debugger
         console.log("Initializing stuff");
         TuberApp.Store.topics = new TuberApp.Collections.Topics(data);
-        TuberApp.Store.currentUser = data.user ? new TuberApp.Models.User(data.user) : null;
         console.log("topic success");
         TuberApp.start();
       },
@@ -34,8 +36,11 @@ window.TuberApp = {
 };
 
 $(document).ready(function(){
-  console.log("Triggered docready");
   $navbar = $("#navbar");
   $rootEl = $("#content");
-  TuberApp.initialize($navbar, $rootEl);
+  var currentUserJSON = $('#current_user_info').html();
+  if (currentUserJSON) {
+    var currentUser = JSON.parse(currentUserJSON);
+  }
+  TuberApp.initialize(currentUser);
 });

@@ -1,27 +1,41 @@
 TuberApp.Routers.Users = Backbone.Router.extend({
   routes: {
     "users/:id" :   "show",
-    "home"      :   "home"
+    "home"      :   "home",
+    "profile"   :   "profile",
+    ""          :   "root"
   },
 
   initialize: function($rootEl){
     this.$rootEl = $rootEl;
   },
 
-  home: function(){ 
+  root: function() {
+    if (TuberApp.Store.currentUser) {
+      Backbone.history.navigate("profile", {trigger: true})
+    } else {
+      TuberApp.Store.navbar.logIn();
+    }
+  },
+
+  home: function() {
+    
+  },
+
+  profile: function(){ 
     var that = this;
     //if there is no ongoing meeting, form to create one; else details of meeting
     //what if no currentUser?
     if (TuberApp.Store.currentUser){
-      if(TuberApp.Store.currentUser.role){ //if currently in meeting
+      if (TuberApp.Store.currentUser.role){ //if currently in meeting
         // var meetingView = TuberApp.
         this.$rootEl.html("displaying meeting details");
 
-      }else{ //just display user's profile
+      } else { //just display user's profile
         that.show(TuberApp.Store.currentUser.id);
       }
-    }else{//no current user
-      this.$rootEl.html("sign up/in");
+    } else {//no current user
+      Backbone.history.navigate("", {trigger: true});
       //some view for generic encouragement to onboard
     };
 
