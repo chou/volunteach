@@ -70,8 +70,13 @@ TuberApp.Views.learn = Backbone.View.extend({
       type: "POST",
       wait: true,
       success: function(model, resp, optns){
-
         Backbone.history.navigate("/home", {trigger: true});
+      },
+      statusCode: {
+        404: function(){
+          Backbone.history.navigate("/home");
+          $('#learnModal').foundation('reveal', 'open');
+        }
       }
     });
   },
