@@ -1,19 +1,21 @@
-<section>
-  <p class="title" data-section-title>
-    <a href="">Ratings</a>
-  </p>
-  <div class="content" data-section-content>
-    <div class="row">
-      <div class="small-4 columns"><label for="avg_rating">Average Rating:</label></div>
-      <div class="small-7 small-offset-1 columns"><input type="text" name="user[avg_rating]" id="avg_rating">
-        <%= TuberApp.Store.currentUser.get("avg_rating") %>
-      </div>
-    </div><!--div class row -->  
-    <div class="row">
-      <div class="small-4 columns"><label for="num_ratings">Number of Ratings:</label></div>
-      <div class="small-7 small-offset-1 columns"><input type="text" name="user[num_ratings]" id="num_ratings">
-        <%= TuberApp.Store.currentUser.get("num_ratings") %>
-      </div>
-    </div><!--div class row -->    
+<div class="row">
+  <div class="panel">
+    <p class="title" data-section-title>
+      <a href="">Ratings</a>
+    </p>
+    <div class="content" data-section-content>
+      <div class="row">
+        <div class="small-4 columns"><label for="avg_rating">Average Rating:</label></div>
+        <div class="small-7 small-offset-1 columns"><input type="text" name="user[avg_rating]" id="avg_rating">
+          <%= TuberApp.Store.currentUser.get("avg_rating") %>
+        </div>
+      </div><!--div class row -->  
+      <div class="row">
+        <div class="small-4 columns"><label for="num_ratings">Number of Ratings:</label></div>
+        <div class="small-7 small-offset-1 columns"><input type="text" name="user[num_ratings]" id="num_ratings">
+          <%= TuberApp.Store.currentUser.get("num_ratings") %>
+        </div>
+      </div><!--div class row -->    
+    </div>
   </div>
-</section>
+</div>

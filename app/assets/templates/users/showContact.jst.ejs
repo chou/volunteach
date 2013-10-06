@@ -1,18 +1,32 @@
-<section>
+<div class="row panel">
   <p class="title" data-section-title>
     <a href="">Contact</a>
   </p>  
   <div class="content" data-section-content>
-    <div class="row">
-      <div class="small-4 columns"><label for="fname">First Name:</label></div>
-      <div class="small-7 small-offset-1 columns"><input type="text" name="user[fname]" id="fname">
-        <%= TuberApp.Store.currentUser.get("fname") %>
+    <div class="row collapse">
+      <div class="small-5 columns">
+        <label class="prefix">First Name:</label>
+      </div>
+      <div class="small-7 columns">
+        <input 
+          type="text" 
+          name="user[fname]" 
+          id="fname" 
+          disabled
+          value="<%= TuberApp.Store.currentUser.get("fname") %>">
       </div>
     </div><!--div class row -->
-    <div class="row">
-      <div class="small-4 columns"><label for="lname">Last Name:</label></div>
-      <div class="small-7 small-offset-1 columns"><input type="text" name="user[lname]" id="lname">
-        <%= TuberApp.Store.currentUser.get("lname") %>
+    <div class="row collapse">
+      <div class="small-5 columns">
+        <label class="prefix" for="lname">Last Name:</label>
+      </div>
+      <div class="small-7 columns">
+        <input 
+          type="text" 
+          name="user[lname]" 
+          id="lname"
+          disabled
+          value="<%= TuberApp.Store.currentUser.get("lname") %>">
       </div>
     </div><!--div class row -->
     <div class="row">
@@ -28,4 +42,4 @@
       </div>
     </div>  <!--div class row -->          
   </div>
-</section>
+</div>

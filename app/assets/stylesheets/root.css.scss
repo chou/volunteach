@@ -1,3 +1,26 @@
 // Place all the styles related to the root controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.label-tag{
+  background-color: #e0edf5;
+  color: #3078ca;
+  padding: .2em;
+  padding-right: .4em;
+  margin: .2em;
+  display: inline-block;
+}
+
+.untag{
+  cursor: pointer;
+  vertical-align: middle;
+  margin: -6px -6px -6px 2px;
+}
+
+#content {
+  padding: 0 20px;
+}
+
+.full {
+  width: 100%;
+}
