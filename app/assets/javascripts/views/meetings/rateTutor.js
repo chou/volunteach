@@ -13,7 +13,9 @@ TuberApp.Views.RateTutor = Backbone.View.extend({
   },
 
   clearRating: function(event) {
-    $('li.star').removeClass("yellow").addClass("gray");
+    if (!this.ratingFixed) {
+      $('li.star').removeClass("yellow").addClass("gray");
+    }
   },
   
   hilightStar: function (event) {
