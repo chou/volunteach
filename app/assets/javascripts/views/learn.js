@@ -52,8 +52,15 @@ TuberApp.Views.learn = Backbone.View.extend({
   submitReq: function(event){
     event.preventDefault();
     var studentRequest = $("#request").serializeJSON();
-    TuberApp.Store.currentUser.save(studentRequest, 
-      { wait: true }
-    );
+    $.ajax({
+      url: "/api/meetings",
+      data: studentRequest,
+      dataType: "json",
+      type: "POST",
+      wait: true,
+      success: function(model, resp, optns){
+        Backbone.history.navigate("");
+      }
+    });
   },
 })

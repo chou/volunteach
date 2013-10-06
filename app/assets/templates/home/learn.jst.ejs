@@ -1,4 +1,10 @@
 <form id="request">
+  <label for="topic-id">Topic:</label>
+  <select id="topic-id" name="meeting[topic_id]">
+  <% TuberApp.Store.topics.each(function(topic){ %>
+    <option value="<%= topic.id %>"><%= topic.get("name") %></option>
+  <% }) %>
+  </select>
   <div class="row">
      <div class="small-1 columns"><label for="addr">Address: </label></div>
     <div class="small-5 columns"><input type="text" name="addr" id="addr"></div>
