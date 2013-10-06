@@ -60,5 +60,13 @@ TuberApp.Routers.Users = Backbone.Router.extend({
         console.log("Error in show function.");
       }
     });
+  },
+
+  _authenticateUserFilter: function() {
+    if (!TuberApp.Store.currentUser) {
+      Backbone.history.navigate("", {trigger: true})
+    }
   }
+
+
 });

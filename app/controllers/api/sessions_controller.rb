@@ -18,7 +18,7 @@ class Api::SessionsController < ApplicationController
     unless logged_in?
       render true, status: :ok
     else
-      render false, status: :unprocessable_entity
+      render :json => false, status: :unprocessable_entity
     end
   end
 end

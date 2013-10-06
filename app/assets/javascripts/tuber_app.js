@@ -6,8 +6,10 @@ window.TuberApp = {
   Store: {},
 
   initialize: function(currentUser) {
-    TuberApp.Store.currentUser = new TuberApp.Models.User(currentUser);
-    TuberApp.Store.currentUser.fetch();
+    if (currentUser) {
+      TuberApp.Store.currentUser = new TuberApp.Models.User(currentUser);
+      TuberApp.Store.currentUser.fetch();
+    }
     $.ajax({
       url: "/api/topics",
       dataType: "json",
