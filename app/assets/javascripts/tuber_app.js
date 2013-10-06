@@ -11,6 +11,7 @@ window.TuberApp = {
       dataType: "json",
       type: "GET",
       success: function(data){
+        console.log("Initializing stuff");
         TuberApp.Store.topics = new TuberApp.Collections.Topics(data);
         TuberApp.Store.currentUser = data.user ? new TuberApp.Models.User(data.user) : null;
         console.log("topic success");
@@ -33,6 +34,7 @@ window.TuberApp = {
 };
 
 $(document).ready(function(){
+  console.log("Triggered docready");
   $navbar = $("#navbar");
   $rootEl = $("#content");
   TuberApp.initialize($navbar, $rootEl);

@@ -29,16 +29,22 @@ TuberApp.Routers.Users = Backbone.Router.extend({
 
   show: function(id) {
     var user = new TuberApp.Models.User({ id: id });
-    user.fetch();
-    TuberApp.Store.currentUser = user;
+    user.fetch({
+      success: function(model, response, options) {
+        TuberApp.Store.currentUser = model;
     
-    var showUser = new TuberApp.Views.UserShow({
-       user: user
+        var showUser = new TuberApp.Views.UserShow({
+           user: model
+        });
+    
+        var renderedView = showUser.render();
+        this.$rootEl.html(renderedView.$contact)
+          .append(renderedView.$topics)
+          .append(renderedView.$ratings);
+      },
+      error: function() {
+        console.log("Error in show function.");
+      }
     });
-    
-    var renderedView = showUser.render();
-    this.$rootEl.html(renderedView.$contact)
-      .append(renderedView.$topics)
-      .append(renderedView.$ratings);
   }
 });
