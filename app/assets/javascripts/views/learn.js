@@ -5,7 +5,7 @@ TuberApp.Views.learn = Backbone.View.extend({
 
   events: {
     "click #submit-req"   :   "submitReq",
-    "click #find-me"        :   "locate"
+    "click #find-me"      :   "locate"
   },
 
   mapInitialize: function(){
@@ -51,7 +51,9 @@ TuberApp.Views.learn = Backbone.View.extend({
 
   submitReq: function(event){
     event.preventDefault();
-    var studentRequest = $("#request").serializeJSON();
+    debugger
+    var studentRequest = $("#meeting").serializeJSON();
+    
     $.ajax({
       url: "/api/meetings",
       data: studentRequest,

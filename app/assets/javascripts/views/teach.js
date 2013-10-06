@@ -72,7 +72,7 @@ TuberApp.Views.teach = Backbone.View.extend({
       { 
         wait: true,
         success: function(model, resp, optns){
-          Backbone.history.navigate("/pending");
+          Backbone.history.navigate("/home");
         }
       }
     );
