@@ -8,16 +8,16 @@
     <% if(TuberApp.Store.currentUser){ %>
       <ul class="right">      
         <li>
-          <a href="profile"><img width="40px" height="40px" src="/nopic.png"></a>
+          <a href="/profile"><img width="40px" height="40px" src="/nopic.png"></a>
         </li>
         <li>
-          <a href="profile"><%= TuberApp.Store.currentUser.abbrevName() %></a>
+          <a href="/profile"><%= TuberApp.Store.currentUser.abbrevName() %></a>
         </li>
         <li>
-          <a href="profile/edit">Edit Profile</a>
+          <a href="/profile/edit">Edit Profile</a>
         </li>
         <li>
-          <a id="logout" href="logout">Log Out</a>
+          <a id="logout" href="/logout">Log Out</a>
         </li>
       </ul>
     <% } else { %>
