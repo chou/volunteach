@@ -1,11 +1,12 @@
 TuberApp.Views.UserEdit = Backbone.View.extend({
   
-  initialize: function(options){
+  initialize: function(options) {
     this.user = options.user;
     this.topics = this.user.get("topic_ids") || null;
     this.template = JST["users/edit"];
-    //this.listenTo(this.user, "change", "render");
   },
+  
+  // submit events cannot be on this container View, must be on the subViews
 
   render: function() {
     var that = this;
@@ -23,6 +24,6 @@ TuberApp.Views.UserEdit = Backbone.View.extend({
     this.$topics = topics.render().$el;
 
     return this;
-  }
+  },
 
 });
