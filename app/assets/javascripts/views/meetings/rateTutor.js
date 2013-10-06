@@ -1,7 +1,8 @@
 TuberApp.Views.RateTutor = Backbone.View.extend({
   events: {
     "mouseover .star": "hilightStar",
-    "click .star": "submitRating"
+    "click .star": "submitRating",
+    "mouseout .star": "clearRating"
   },
   
   initialize: function(options) {
@@ -9,6 +10,10 @@ TuberApp.Views.RateTutor = Backbone.View.extend({
     this.meeting = options.meeting;
     this.template = JST['meetings/ratetutor'];
     this.ratingFixed = false;
+  },
+
+  clearRating: function(event) {
+    $('li.star').removeClass("yellow").addClass("gray");
   },
   
   hilightStar: function (event) {
