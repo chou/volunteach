@@ -6,9 +6,10 @@ class Api::MeetingsController < ApplicationController
       find_closest_available_tutor(params[:topic_id])
       @meeting = Meeting.create(tutor_id: nearest_tutor.id,
       student_id: current_user.id, topic_id: params[:topic_id])
-      render :show
+      render :show, status: :ok
     else
-      render :json => {message: "No tutor found. Perhaps you should try teaching this subject?"}
+      render :json => {message: "No tutor found. Perhaps you should try teaching this subject?"},
+        status: :not_found
     end
   end
 
@@ -19,3 +20,4 @@ class Api::MeetingsController < ApplicationController
     render :json => meeting
   end
 end
+
