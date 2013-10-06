@@ -13,7 +13,6 @@ window.TuberApp = {
       dataType: "json",
       type: "GET",
       success: function(data){
-        debugger
         console.log("Initializing stuff");
         TuberApp.Store.topics = new TuberApp.Collections.Topics(data);
         console.log("topic success");
@@ -30,6 +29,7 @@ window.TuberApp = {
     var renderedContent = TuberApp.Store.navbar.render().$el
     $navbar.html(renderedContent);
     var usersRouter = new TuberApp.Routers.Users($rootEl);
+    var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
     // var meetingsRouter = new TuberApp.Routers.Meetings($rootEl);
     Backbone.history.start({ pushState: true });
   }
