@@ -53,7 +53,16 @@ TuberApp.Views.learn = Backbone.View.extend({
     event.preventDefault();
     debugger
     var studentRequest = $("#meeting").serializeJSON();
-    
+    cut = ["id", "avg_rating", "num_ratings", "created_at", "updated_at", "role", "meeting"]
+
+    userAttrs = TuberApp.Store.currentUser.attributes;
+
+    _.each(cut, function(key){
+      delete userAttrs[key];
+    });
+
+    studentRequest.user = userAttrs;
+
     $.ajax({
       url: "/api/meetings",
       data: studentRequest,
