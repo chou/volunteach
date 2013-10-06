@@ -76,8 +76,10 @@ TuberApp.Views.teach = Backbone.View.extend({
         wait: true,
         success: function(model, resp, optns){
           console.log("submitted avail");
-          Backbone.history.navigate("/home");
-          $('#myModal').foundation('reveal', 'open');
+          $('#teachModal').foundation('reveal', 'open');
+          $('#teach').click(function(){
+            Backbone.history.navigate("/home");
+          });
         }
       }
     );
